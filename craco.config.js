@@ -5,6 +5,8 @@
 const CracoLessPlugin = require('craco-less');
 const eslintConfig = require('./.eslintrc.js');
 
+console.log('env', process.env);
+
 module.exports = {
   plugins: [
     {
