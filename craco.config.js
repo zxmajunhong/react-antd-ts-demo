@@ -5,8 +5,6 @@
 const CracoLessPlugin = require('craco-less');
 const eslintConfig = require('./.eslintrc.js');
 
-console.log('env', process.env);
-
 module.exports = {
   plugins: [
     {
@@ -24,5 +22,14 @@ module.exports = {
   ],
   eslint: {
     configure: (config, { env, paths }) => eslintConfig,
+  },
+  webpack: {
+    configure: (webpackConfig, { env }) => {
+      if (env === 'production') {
+        // eslint-disable-next-line no-param-reassign
+        webpackConfig.output.publicPath = '/zxwx';
+      }
+      return webpackConfig;
+    },
   },
 };
